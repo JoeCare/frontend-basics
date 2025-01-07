@@ -1,0 +1,33 @@
+//sk: Write a program where:
+
+//The computer picks a random number between 1 and 100.
+//The user inputs a guess.
+//The program tells the user if the guess is too high, too low, or correct.
+//The game continues until the user guesses the correct number.
+<script>
+    const randomNumber = Math.floor(Math.random() * 100) +1;
+
+    function playGame () {
+        let userGuess = null;
+        
+        while (userGuess !== randomNumber) {
+            userGuess = parseInt(prompt("Guess a number between 1 and 100"));
+
+            if (isNaN(userGuess)) {
+                alert("Please enter a valid number!");
+                continue;
+            }
+        
+            if (userGuess < randomNumber) {
+                alert("Too low!");
+            } else if (userGuess > randomNumber) {
+                alert("Too high!");
+            } else {
+                alert("Congratz!");
+                break;
+            }
+        }
+    }
+
+    playGame()
+</script>
