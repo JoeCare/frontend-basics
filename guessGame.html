@@ -1,30 +1,46 @@
-//sk: Write a program where:
 
-//The computer picks a random number between 1 and 100.
-//The user inputs a guess.
-//The program tells the user if the guess is too high, too low, or correct.
-//The game continues until the user guesses the correct number.
 <script>
-    const randomNumber = Math.floor(Math.random() * 100) +1;
+    //sk: Write a program where:
 
+    //The computer picks a random number between 1 and 100.
+    //The user inputs a guess.
+    //The program tells the user if the guess is too high, too low, or correct.
+    //The game continues until the user guesses the correct number.
     function playGame () {
-        let userGuess = null;
-        
-        while (userGuess !== randomNumber) {
-            userGuess = parseInt(prompt("Guess a number between 1 and 100"));
 
-            if (isNaN(userGuess)) {
-                alert("Please enter a valid number!");
-                continue;
+        let playAgain = true; // variable for controling game loop
+
+        while (playAgain) {
+            const randomNumber = Math.floor(Math.random() * 100) +1;
+            let attempts = 0
+            let userGuess = null;
+            
+            // game loop:
+            while (userGuess !== randomNumber) { 
+                userGuess = parseInt(prompt("Guess a number between 1 and 100"));
+                if (isNaN(userGuess)) {
+                    alert("Please enter a valid number!");
+                    continue;
+                }
+                attempts ++; //increments number of attempts after user fill the form
+                alert("You have ${10 - attempts} guesses left.")
+
+                if (userGuess < randomNumber) {
+                    alert("Too low!");
+                } else if (userGuess > randomNumber) {
+                    alert("Too high!");
+                } else if (attempts >= 10) {
+                    alert("You lose!") 
+                } else {
+                    alert("Congratz! You guessed after ${attempts}!");
+                    break;
+                }
             }
-        
-            if (userGuess < randomNumber) {
-                alert("Too low!");
-            } else if (userGuess > randomNumber) {
-                alert("Too high!");
-            } else {
-                alert("Congratz!");
-                break;
+
+            let userResponse = prompt("Do you want to play again?").toLowerCase();
+            if (userResponse !== "yes") {
+                playAgain = false;
+                alert("Thanks for playing!");
             }
         }
     }
