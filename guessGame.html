@@ -23,7 +23,7 @@
                     continue;
                 }
                 attempts ++; //increments number of attempts after user fill the form
-                alert("You have ${10 - attempts} guesses left.")
+                alert(`You have ${10 - attempts} guesses left.`)
 
                 if (userGuess < randomNumber) {
                     alert("Too low!");
@@ -32,7 +32,7 @@
                 } else if (attempts >= 10) {
                     alert("You lose!") 
                 } else {
-                    alert("Congratz! You guessed after ${attempts}!");
+                    alert(`Congratz! You guessed after ${attempts} attempts!`);
                     break;
                 }
             }
