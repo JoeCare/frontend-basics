@@ -82,7 +82,7 @@
     } else if (attempts >= 10) {
       messageEl.textContent = "You lose!"; 
     } else {
-      alert(`Congratz! You guessed after ${attempts} attempts!`);
+      messageEl.textContent = `Congratz! You guessed after ${attempts} attempts!`;
       endGame();
       return;
     }
