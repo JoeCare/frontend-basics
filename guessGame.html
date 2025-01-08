@@ -60,7 +60,7 @@
     messageEl.textContent = "Guess a number between 1 and 100:";
     attemptsLeftEl.textContent = `You have ${maxAttempts} guess left.`;
     userGuessInput.value = "";
-    userGuessInput.disable = false;
+    userGuessInput.disabled = false;
     playAgainBtn.classList.add("hidden");
   }
 
@@ -69,47 +69,83 @@
 
     if (isNaN(userGuess)) {
       messageEl.textContent = "Please enter a valid number";
+      return;
+    }
+
+    attempts++;
+    const guessesLeft = maxAttempts - attempts;
+
+    if (userGuess < randomNumber) {
+      messageEl.textContent = "Too low!";
+    } else if (userGuess > randomNumber) {
+      messageEl.textContent = "Too high!";
+    } else if (attempts >= 10) {
+      messageEl.textContent = "You lose!"; 
+    } else {
+      alert(`Congratz! You guessed after ${attempts} attempts!`);
+      endGame();
+      return;
+    }
+
+    if (guessesLeft <=0 ) {
+      messageEl.textContent = `Game over! You failed to find number: ${randomNumber}`;
+      endGame();
+    } else {
+      attemptsLeftEl.textContent = `You have ${guessesLeft} guesses left.`;
     }
   }
+  function endGame() {
+    userGuessInput.disabled = true;
+    playAgainBtn.classList.remove("hidden");
+  }
 
-  playAgain = true;
+  function playAgain() {
+    initGame();
+  }
+
+  initGame()
+
+
+
+
+  // playAgain = true;
   
 
-        while (playAgain) {
-            const randomNumber = Math.floor(Math.random() * 100) +1;
-            let attempts = 0;
-            let userGuess = null;
+  //       while (playAgain) {
+  //           const randomNumber = Math.floor(Math.random() * 100) +1;
+  //           let attempts = 0;
+  //           let userGuess = null;
             
-            // game loop:
-            while (userGuess !== randomNumber) { 
-                userGuess = parseInt(prompt("Guess a number between 1 and 100"));
-                if (isNaN(userGuess)) {
-                    alert("Please enter a valid number!");
-                    continue;
-                }
-                attempts ++; //increments number of attempts after user fill the form
-                alert(`You have ${10 - attempts} guesses left.`)
+  //           // game loop:
+  //           while (userGuess !== randomNumber) { 
+  //               userGuess = parseInt(prompt("Guess a number between 1 and 100"));
+  //               if (isNaN(userGuess)) {
+  //                   alert("Please enter a valid number!");
+  //                   continue;
+  //               }
+  //               attempts ++; //increments number of attempts after user fill the form
+  //               alert(`You have ${10 - attempts} guesses left.`)
 
-                if (userGuess < randomNumber) {
-                    alert("Too low!");
-                } else if (userGuess > randomNumber) {
-                    alert("Too high!");
-                } else if (attempts >= 10) {
-                    alert("You lose!") 
-                } else {
-                    alert(`Congratz! You guessed after ${attempts} attempts!`);
-                    break;
-                }
-            }
+  //               if (userGuess < randomNumber) {
+  //                   alert("Too low!");
+  //               } else if (userGuess > randomNumber) {
+  //                   alert("Too high!");
+  //               } else if (attempts >= 10) {
+  //                   alert("You lose!") 
+  //               } else {
+  //                   alert(`Congratz! You guessed after ${attempts} attempts!`);
+  //                   break;
+  //               }
+  //           }
 
-            let userResponse = prompt("Do you want to play again?").toLowerCase();
-            if (userResponse !== "yes") {
-                playAgain = false;
-                alert("Thanks for playing!");
-            }
-        }
+  //           let userResponse = prompt("Do you want to play again?").toLowerCase();
+  //           if (userResponse !== "yes") {
+  //               playAgain = false;
+  //               alert("Thanks for playing!");
+  //           }
+  //       }
     
 
-    playGame()
+  //   playGame()
 </script>
 </html>
