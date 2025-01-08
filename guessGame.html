@@ -1,3 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Number Guessing Game</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+      padding: 0;
+      text-align: center;
+    }
+    .hidden {
+      display: none;
+    }
+    .message {
+      margin: 15px 0;
+      font-size: 18px;
+      color: #333;
+    }
+    input, button {
+      padding: 10px;
+      font-size: 16px;
+      margin: 5px;
+    }
+  </style>
+</head>
+<body>
+    <h1>
+        Number guessing game
+    </h1>
+    <p class="message" id="message"> Guess a number between 1 and 100:</p>
+    <input type="number" id="userGuess" placeholder="Enter a number"/>
+    <button onclick="submitGuess()">Submit Guess</button>
+    <p class="message" id="attemptsLeft"><</p>
+    <button onclick="playAgain" class="hidden" id="playAgainBtn">Play again?</button>
+</body>
 
 <script>
     //sk: Write a program where:
@@ -6,13 +44,40 @@
     //The user inputs a guess.
     //The program tells the user if the guess is too high, too low, or correct.
     //The game continues until the user guesses the correct number.
-    function playGame () {
 
-        let playAgain = true; // variable for controling game loop
+  const maxAttempts = 10;
+  let randomNumber;
+  let attempts;
+
+  const messageEl = document.getElementById("message");
+  const attemptsLeftEl = document.getElementById("attemptsLeft");
+  const playAgainBtn = document.getElementById("playAgainBtn");
+  const userGuessInput = document.getElementById("userGuess");
+
+  function initGame () {
+    randomNumber = Math.floor(Math.random() * 100) +1;
+    attempts = 0;
+    messageEl.textContent = "Guess a number between 1 and 100:";
+    attemptsLeftEl.textContent = `You have ${maxAttempts} guess left.`;
+    userGuessInput.value = "";
+    userGuessInput.disable = false;
+    playAgainBtn.classList.add("hidden");
+  }
+
+  function submitGuess() {
+    const userGuess = parseInt(userGuessInput.value, 10);
+
+    if (isNaN(userGuess)) {
+      messageEl.textContent = "Please enter a valid number";
+    }
+  }
+
+  playAgain = true;
+  
 
         while (playAgain) {
             const randomNumber = Math.floor(Math.random() * 100) +1;
-            let attempts = 0
+            let attempts = 0;
             let userGuess = null;
             
             // game loop:
@@ -43,7 +108,8 @@
                 alert("Thanks for playing!");
             }
         }
-    }
+    
 
     playGame()
 </script>
+</html>
