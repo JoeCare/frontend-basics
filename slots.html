@@ -43,19 +43,30 @@
       font-size: 20px;
       color: #555;
     }
-    /* Keyframes for spinning animation */
-    @keyframes spin {
-    0% { transform: translateY(0); }
-    25% { transform: translateY(-100%); }
-    50% { transform: translateY(-200%); }
-    75% { transform: translateY(-300%); }
-    100% { transform: translateY(0); }
-  }
+
+    .reel {
+      overflow: hidden;
+      position: relative;
+    }
+
+    .reel .symbol {
+      font-size: 50;
+      height: 70px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
 
     /* Add animation to the reel when spinning */
-    .reel.spinning {
-    animation: spin 1s ease-in-out;
-  }
+    .reel .spinning {
+      animation: spin 1s ease-in-out;
+    }
+
+      /* Keyframes for spinning animation */
+    @keyframes spin {
+      0% { transform: translateY(0); }
+      100% { transform: translateY(-350px); }
+    }
   </style>
 </head>
 <body>
@@ -63,9 +74,27 @@
   
   <!-- Reels -->
   <div class="reel-container">
-    <div class="reel" id="reel1">🍒</div>
-    <div class="reel" id="reel2">🍒</div>
-    <div class="reel" id="reel3">🍒</div>
+    <div class="reel" id="reel1">
+      <div class="symbol">🍒</div>
+      <div class="symbol">🍋</div>
+      <div class="symbol">⭐</div>
+      <div class="symbol">🔔</div>
+      <div class="symbol">🍉</div>
+    </div>
+    <div class="reel" id="reel2">
+      <div class="symbol">🍒</div>
+      <div class="symbol">🍋</div>
+      <div class="symbol">⭐</div>
+      <div class="symbol">🔔</div>
+      <div class="symbol">🍉</div>
+    </div>
+    <div class="reel" id="reel3">
+      <div class="symbol">🍒</div>
+      <div class="symbol">🍋</div>
+      <div class="symbol">⭐</div>
+      <div class="symbol">🔔</div>
+      <div class="symbol">🍉</div>
+    </div>
   </div>
   
   <!-- Spin Button -->
