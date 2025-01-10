@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Simplified Slots Game</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      margin: 20px;
+    }
+    .reel-container {
+      display: flex;
+      justify-content: center;
+      margin: 20px 0;
+    }
+    .reel {
+      font-size: 50px;
+      margin: 0 10px;
+      width: 70px;
+      height: 70px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border: 2px solid #333;
+      border-radius: 10px;
+    }
+    .spin-button {
+      padding: 10px 20px;
+      font-size: 18px;
+      cursor: pointer;
+      background-color: #28a745;
+      color: white;
+      border: none;
+      border-radius: 5px;
+    }
+    .spin-button:hover {
+      background-color: #218838;
+    }
+    .message {
+      margin-top: 20px;
+      font-size: 20px;
+      color: #555;
+    }
+    /* Keyframes for spinning animation */
+    @keyframes spin {
+    0% { transform: translateY(0); }
+    25% { transform: translateY(-100%); }
+    50% { transform: translateY(-200%); }
+    75% { transform: translateY(-300%); }
+    100% { transform: translateY(0); }
+  }
+
+    /* Add animation to the reel when spinning */
+    .reel.spinning {
+    animation: spin 1s ease-in-out;
+  }
+  </style>
+</head>
+<body>
+  <h1>Simplified Slots Game</h1>
+  
+  <!-- Reels -->
+  <div class="reel-container">
+    <div class="reel" id="reel1">🍒</div>
+    <div class="reel" id="reel2">🍒</div>
+    <div class="reel" id="reel3">🍒</div>
+  </div>
+  
+  <!-- Spin Button -->
+  <button class="spin-button" onclick="spinReels()">Spin</button>
+  
+  <!-- Message Display -->
+  <p class="message" id="message"></p>
+  
+  <script src="slots.js"></script>
+</body>
+</html>
