@@ -109,20 +109,23 @@ function calcAge2(birthYear) {
 }
 
 // Arrow function (kind of function expression) (doesn't get 'this' keyword)
+// good oneliners
 
 calcAge3 = birthYear => 2037 - birthYear;
 console.log(calcAge3(1991));
 
 calcYearsToRetire = (birthYear, firstName) => {
-    const age = calcAge3(birthYear)
-    if (67 - age > 0) {
-        return `${firstName} has ${67 - age} years to retirement.`
+    const age = calcAge3(birthYear);
+    toRetirement = 67 - age
+    if (retirement > 0) {
+        console.log(`${firstName} has ${retirement} years to retirement.`);
+        return retirement
     } else {
-        return `Retired since ${Math.abs(67 - age)} years.`
+        console.log(`Retired since ${Math.abs(retirement)} years.`);
+        return -1
     }
-    ;
 }
-
+// multicaret in vsc ctrl+alt+click, ctrl+d
 console.log(calcYearsToRetire(1993, 'John'));
 console.log(calcYearsToRetire(1968, 'Joe'));
 peelFruit = function(wholeFruit) {
@@ -140,3 +143,11 @@ juicerCounter = function(apples, oranges) {
 }
 
 console.log(juicerCounter(1, 4));
+
+
+calcAvarage = (score1, score2, score3) => score1 + score2 + score3 / 3;
+
+scoreDolphins = (score1, score2, score3) => calcAvarage(score1, score2, score3);
+scoreKoalas = (score1, score2, score3) => calcAvarage(score1, score2, score3);
+
+console.log(calcAvarage(1, 2, 3));
