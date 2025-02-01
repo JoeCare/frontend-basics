@@ -143,7 +143,7 @@ juicerCounter = function(apples, oranges) {
 }
 
 console.log(juicerCounter(1, 4));
-
+'use strict'
 /*
 CHALLENGE #1
 
@@ -182,10 +182,10 @@ calcAvarage = (score1, score2, score3) => (score1 + score2 + score3) / 3;
 // avgKoalas = calcAvarage(score1, score2, score3);
 
 checkWinner = function(avgDolphins, avgKoalas) {
-    if (avgKoalas > 2 * avgDolphins) {
+    if (avgKoalas >= 2 * avgDolphins) {
         console.log(`Koalas win with ${avgKoalas}:${avgDolphins}!`);
         return 'Koalas'
-    } else if (avgDolphins > 2 * avgKoalas) {
+    } else if (avgDolphins >= 2 * avgKoalas) {
         console.log(`Dolphins win with ${avgDolphins}:${avgKoalas}!`);
         return 'Dolphins'
     } else {
