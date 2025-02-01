@@ -54,11 +54,17 @@ age >=  18 ? console.log("You're adult.") : console.log("You're under age.");
 const drink = age >= 18 ? "wine" : "water";
 console.log(drink);
 
-console.log(`I like to drink ${age >= 18
-     ? "wine" : "water"}.`)
-console.log(`I like to drink ${drink}.`)
+console.log(`I like to drink ${age >= 18 ? "wine" : "water"}.`);
 
+function likeToEat(drink) {
+    console.log(`I like to eat oranges}.`);
+}
+likeToEat()
 
+if (likeToEat() === undefined) {
+    console.log(`likeToEat returns undefined`)
+}
+console.assert(typeof likeToEat() === undefined, "AssertionError: returns undefined")
 
 const billValue = 275;
 const tip = billValue >= 50 && billValue <= 300 ? billValue * 0.15 : billValue * 0.20
@@ -66,8 +72,7 @@ console.log(`You should pay ${billValue + tip}`)
 
 function fruitProcessor(fruits, number) {
     console.log(fruits);
-    const juice = `Juice with ${number} ${fruits}.`;
-    return juice;
+    return `Juice with ${number} ${fruits}.`;
 }
 
 console.log(fruitProcessor('apples', 3));
@@ -75,14 +80,63 @@ appleJuice = fruitProcessor('apples', 3);
 console.log(appleJuice);
 
 function manyArgs(var1, var2, var3) {
-    args = [].concat.call(arguments);
-    return args;
+    return [].concat.call(arguments);
 }
 console.log(String(manyArgs("one", "two", "three")));
 console.log(manyArgs("one", "two", "three").toString());
 
 function restArgs(x, ...args) {
-    console.log(`First argument is ${x} and rest are ${args}`)
+    console.log(`First argument is ${x} and rest are ${args}`);
 }
 
 restArgs(1, 2, 3, 4, 5)
+// birthYear = 1991;
+
+// Function expression:
+// more readable because u have to declare function before invoking and it's stored in variable from the beginning
+calcAge1 = function(birthYear) {
+    return 2037 - birthYear;
+}
+
+console.log(calcAge1(1991));
+
+
+// function declaration:
+// might be invoked before declaration : o (hoisting)
+console.log(calcAge2(1991));
+function calcAge2(birthYear) {
+    return 2037 - birthYear;
+}
+
+// Arrow function (kind of function expression) (doesn't get 'this' keyword)
+
+calcAge3 = birthYear => 2037 - birthYear;
+console.log(calcAge3(1991));
+
+calcYearsToRetire = (birthYear, firstName) => {
+    const age = calcAge3(birthYear)
+    if (67 - age > 0) {
+        return `${firstName} has ${67 - age} years to retirement.`
+    } else {
+        return `Retired since ${Math.abs(67 - age)} years.`
+    }
+    ;
+}
+
+console.log(calcYearsToRetire(1993, 'John'));
+console.log(calcYearsToRetire(1968, 'Joe'));
+peelFruit = function(wholeFruit) {
+    return wholeFruit * 0.9;
+}
+
+juicerCounter = function(apples, oranges) {
+    console.log(`Got ${apples}kg of apples and ${oranges}kg of oranges.`);
+    const peeledApples = peelFruit(apples);
+    const peeledOranges = peelFruit(oranges);
+    console.log(`After peeling there is ${peeledApples}kg of apples and ${peeledOranges}kg of oranges.`);
+    const appleJuicePerFruit = peeledApples * 0.5;
+    const orangeJuicePerFruit = peeledOranges * 0.2;
+    return `${appleJuicePerFruit + orangeJuicePerFruit}l of juice made from ${apples}kg apples and ${oranges}kg oranges.`;
+}
+
+console.log(juicerCounter(1, 4));
