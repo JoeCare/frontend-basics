@@ -173,13 +173,13 @@ TEST DATA 2: Dolphins scored 85, 54, and 41. Koalas scored 23, 34, and 27.
 */
 
 
-calcAvarage = (score1, score2, score3) => (score1 + score2 + score3) / 3;
+calcAverage = (score1, score2, score3) => (score1 + score2 + score3) / 3;
 
-// scoreDolphins = (score1, score2, score3) => calcAvarage(score1, score2, score3);
-// scoreKoalas = (score1, score2, score3) => calcAvarage(score1, score2, score3);
+// scoreDolphins = (score1, score2, score3) => calcAverage(score1, score2, score3);
+// scoreKoalas = (score1, score2, score3) => calcAverage(score1, score2, score3);
 
-// avgDolphins = calcAvarage(score1, score2, score3);
-// avgKoalas = calcAvarage(score1, score2, score3);
+// avgDolphins = calcAverage(score1, score2, score3);
+// avgKoalas = calcAverage(score1, score2, score3);
 
 checkWinner = function(avgDolphins, avgKoalas) {
     if (avgKoalas >= 2 * avgDolphins) {
@@ -206,11 +206,55 @@ TEST_DATA2 = {
 
 console.log()
 checkData1 = checkWinner(
-    calcAvarage(TEST_DATA1.Dolphins[0], TEST_DATA1.Dolphins[1], TEST_DATA1.Dolphins[2]), 
-    calcAvarage(TEST_DATA1.Koalas[0], TEST_DATA1.Koalas[1], TEST_DATA1.Koalas[2]));
+    calcAverage(TEST_DATA1.Dolphins[0], TEST_DATA1.Dolphins[1], TEST_DATA1.Dolphins[2]), 
+    calcAverage(TEST_DATA1.Koalas[0], TEST_DATA1.Koalas[1], TEST_DATA1.Koalas[2]));
 console.log(checkData1)
 
 checkData2 = checkWinner(
-    calcAvarage(TEST_DATA2.Dolphins[0], TEST_DATA2.Dolphins[1], TEST_DATA2.Dolphins[2]), 
-    calcAvarage(TEST_DATA2.Koalas[0], TEST_DATA2.Koalas[1], TEST_DATA2.Koalas[2]));
+    calcAverage(TEST_DATA2.Dolphins[0], TEST_DATA2.Dolphins[1], TEST_DATA2.Dolphins[2]), 
+    calcAverage(TEST_DATA2.Koalas[0], TEST_DATA2.Koalas[1], TEST_DATA2.Koalas[2]));
 console.log(checkData2)
+
+arr = ["a", "b", "c"]
+for (let i = 0; i < arr.length; i++) {
+    console.log(arr[i])
+}
+
+// for (let i = 0; i < TEST_DATA1.Dolphins.length &&
+//     TEST_DATA1.Koalas.length &&
+//     TEST_DATA2.Dolphins.length &&
+//     TEST_DATA2.Koalas.length; i++) {
+//         checkWinner()
+//     }
+
+testData = [
+    {"Dolphins": [44, 23, 71], "Koalas": [65, 54, 49]},
+    {"Dolphins": [85, 54, 41], "Koalas": [23, 34, 27]}
+]
+
+for (i = 0; i < testData.length; i++) {
+    avgDolphins = calcAverage(...testData[i].Dolphins);
+    avgKoalas = calcAverage(...testData[i].Koalas);
+    console.log(`Test data ${i + 1}: Dolphins: ${avgDolphins}, Koalas: ${avgKoalas}`);
+    checkWinner(avgDolphins, avgKoalas);
+}
+
+const calcTip = function(billValue) {
+    if (50 <= billValue <= 300) {
+        return billValue * 0.15; // + billValue;
+    } else {
+        return billValue * 0.2; // + billValue;
+    }
+}
+
+console.log(calcTip(100));
+
+const testBills = [125, 555, 44];
+const tips = [calcTip(testBills[0]), calcTip(testBills[1]), calcTip(testBills[2])];
+const totals = []
+
+for (let i = 0; i < testBills.length; i++) {
+    totals[i] = calcTip(testBills[i]) + testBills[i];
+    console.log(totals[i])
+}
+console.log(totals)
