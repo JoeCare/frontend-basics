@@ -238,9 +238,14 @@ for (i = 0; i < testData.length; i++) {
     console.log(`Test data ${i + 1}: Dolphins: ${avgDolphins}, Koalas: ${avgKoalas}`);
     checkWinner(avgDolphins, avgKoalas);
 }
+// arrays
 
+/** 
+ * @param {number} billValue
+ * @return {number} 
+*/
 const calcTip = function(billValue) {
-    if (50 <= billValue <= 300) {
+    if (50 <= billValue && billValue <= 300) {
         return billValue * 0.15; // + billValue;
     } else {
         return billValue * 0.2; // + billValue;
@@ -248,6 +253,9 @@ const calcTip = function(billValue) {
 }
 
 console.log(calcTip(100));
+console.log(calcTip(125));
+console.log(calcTip(555));
+console.log(calcTip(44));
 
 const testBills = [125, 555, 44];
 const tips = [calcTip(testBills[0]), calcTip(testBills[1]), calcTip(testBills[2])];
@@ -255,6 +263,56 @@ const totals = []
 
 for (let i = 0; i < testBills.length; i++) {
     totals[i] = calcTip(testBills[i]) + testBills[i];
-    console.log(totals[i])
+    console.log(totals[i]);
 }
-console.log(totals)
+console.log(totals);
+// add elem
+totals.push(100);
+console.log(totals);
+totals.unshift(10);
+console.log(totals);
+// remove elem
+const popped = totals.pop();
+console.log(popped); // last
+totals.shift();
+console.log(popped); // first 
+
+// index of elem
+totals.indexOf(555); // returns index or -1 if its not in there
+totals.includes(555); // returns boolean
+
+const obj = {
+    firstName: "Joe",
+    lastName: "Care",
+    phone: 786291092,
+    height: 5.6,
+    friends: ["Michael", "Bart", "Martha"],
+    fullName: function(firstName, lastName) {
+        return firstName + " " + lastName;
+    } 
+};
+const keyName = "Name"
+console.log(obj);
+console.log(obj.phone);
+console.log(obj["first" + keyName]); 
+
+// const attr = prompt("Which attribute to print in console?");
+// if (obj[attr]) {
+//     console.log(obj[attr]);
+// } else {
+//     console.log("Wrong key name.");
+// }
+
+obj.weigth = 66.6;
+console.log(obj);
+console.log(`${obj.firstName} has ${obj.friends.length} friends and his best friend is ${obj.friends.pop()}.`);
+
+obj["skill"] = function() {
+    console.log("I can dance");
+}
+// obj.fullName = function() {
+//     return this.firstName + this.lastName;
+// }
+
+console.log(obj.skill());
+console.log(obj.fullName());
