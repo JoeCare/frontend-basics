@@ -363,13 +363,15 @@ for (i = 0; i < tips.length; i++) {
   totals[i] = bills[i] + tips[i];
   console.log(bills[i], tips[i], totals[i])
 }
-
-calcAvarage = function(arr) {
-    sum = 0;
-    for (i = 0; i < arr.lenght; i++) {
-        sum += i;
+console.log(totals)
+const calcAvarage = function(arr) {
+    let sum = 0;
+    for (let i = 0; i < arr.length; i++) {
+        sum += arr[i];
     }
-    return sum / sum.length
+    console.log(sum)
+    return sum / arr.length
 }
+console.log(calcAvarage([2, 3, 6]));
 
 console.log(calcAvarage(totals));
